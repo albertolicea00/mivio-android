@@ -1,0 +1,41 @@
+# Built artifacts
+bin/
+gen/
+out/
+build/
+.gradle/
+.kotlin/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+.factorypath
+captures/
+navigation/
+
+# Local configuration
+local.properties
+.DS_Store
+
+# Android Studio / IntelliJ cache
+.navigation/
+.externalNativeBuild/
+.cxx/
+*.keystore
+!debug.keystore
+
+# External Tools
+.prompts/
+.claude/
+
+# Log files
+*.log
+
+# Crash logs
+hs_err_pid*
+replay_pid*
