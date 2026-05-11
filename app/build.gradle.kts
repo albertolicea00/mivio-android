@@ -82,7 +82,7 @@ dependencies {
     
     // Networking (jcifs-ng, Sardine)
     implementation("eu.agno3.jcifs:jcifs-ng:2.1.9")
-    implementation("com.github.thegrizzlymac:sardine-android:0.8")
+    implementation("com.github.thegrizzlylabs:sardine-android:0.8")
     
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
