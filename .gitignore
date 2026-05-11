@@ -16,7 +16,6 @@ build/
 .settings/
 .factorypath
 captures/
-navigation/
 
 # Local configuration
 local.properties
