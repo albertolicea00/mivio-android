@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class SmbClientImpl @Inject constructor() : NetworkClient {
 
-    private fun getContext(source: SourceEntity): jcifs.context.CIFSContext {
+    private fun getContext(source: SourceEntity): jcifs.CIFSContext {
         val baseContext = SingletonContext.getInstance()
         if (!source.username.isNullOrEmpty() && source.password != null) {
             val auth = NtlmPasswordAuthenticator("", source.username, source.password)
