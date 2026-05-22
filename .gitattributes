@@ -1,0 +1,45 @@
+# Global git attributes
+# ---------------------
+# Handle line endings automatically. Force LF on checkout for text files.
+* text=auto eol=lf
+
+# Source Code
+# -----------
+*.kt text diff=kotlin
+*.kts text diff=kotlin
+*.java text diff=java
+*.xml text
+
+# Configuration & Gradle
+# ----------------------
+*.gradle text
+*.properties text
+*.pro text
+*.txt text
+gradlew eol=lf
+gradlew.bat eol=crlf
+
+# Markup files
+# ------------
+*.md text
+*.markdown text
+*.json text
+
+# Binaries & Media assets
+# ------------------------
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text
+*.mp4 binary
+*.mkv binary
+*.avi binary
+*.mp3 binary
+*.flac binary
+*.wav binary
+*.ttf binary
+*.otf binary
+*.jar binary
+*.aar binary

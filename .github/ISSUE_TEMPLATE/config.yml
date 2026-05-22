@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerabilities
+    url: https://github.com/albertolicea00/mivio-android/security/advisories
+    about: Please report security vulnerabilities privately here or via email to albertolicea00@gmail.com. Do not open public issues.
+  - name: General Discussions
+    url: https://github.com/albertolicea00/mivio-android/discussions
+    about: Ask questions, share ideas, or showcase your setups!
