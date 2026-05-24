@@ -12,12 +12,20 @@ Whether scanning local folders on internal storage, connecting to high-speed hom
 
 ---
 
-## 🎨 Platform-Specific Experience Goals
+## 🎨 Platform Features & Limitations
 
-Mivio for Android avoids a generic "one-size-fits-all" interface. We leverage modern Material 3 design and Compose while styling visual layouts to fit the unique paradigms of Android devices:
+Mivio for Android is the most complete implementation regarding local playback and networking, adapting its interface and capabilities to the device:
 
-- **📱 Android Phones & Tablets**: Dynamic responsive grids, intuitive bottom navigation, fluid swipe gestures, native Picture-in-Picture (PiP), and secure scoped storage integration for local files.
-- **Cinematic Player**: High-quality hardware-accelerated playback utilizing **Media3 ExoPlayer** for seamless media decoding and subtitle rendering.
+### 📺 Android TV / Google TV
+- ✅ **USB Read & Write**: Full support for external drives. You can even write and save `.nfo` metadata files and artwork locally.
+- ✅ **Home Server Client**: Fully connects to Plex, Jellyfin, and Emby.
+- ✅ **Optional Local Multi-Account**: Manage different local profiles on the TV itself.
+- ✅ **Advanced Player**: Integrated high-performance playback utilizing **Media3 ExoPlayer** and **VLC** engines.
+
+### 📱 Android Mobile & Tablet
+- ✅ **Local + Servers**: Identical to iOS, supporting both local device storage and external server connections.
+- ✅ **Local Multi-Account**: Each user saves their progress independently on the same device.
+- ✅ **Dynamic UI**: Responsive grids, fluid swipe gestures, and native Picture-in-Picture (PiP).
 
 ---
 
