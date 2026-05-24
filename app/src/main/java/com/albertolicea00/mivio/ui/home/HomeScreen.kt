@@ -25,25 +25,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.albertolicea00.mivio.ui.theme.BackgroundColor
+import com.albertolicea00.mivio.ui.theme.BrandPrimary
+import com.albertolicea00.mivio.ui.theme.MutedGray
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onNavigateToSources: () -> Unit) {
-    val backgroundColor = Color(0xFF0C0D14)
-    val brandPrimary = Color(0xFFF14911)
-    val mutedGray = Color(0xFF7E8494)
-
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Your Library", fontWeight = FontWeight.Bold, color = Color.White) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = backgroundColor,
+                    containerColor = BackgroundColor,
                     titleContentColor = Color.White
                 )
             )
         },
-        containerColor = backgroundColor
+        containerColor = BackgroundColor
     ) { paddingValues ->
         BoxWithConstraints(
             modifier = Modifier
@@ -74,8 +73,8 @@ fun HomeScreen(onNavigateToSources: () -> Unit) {
                 ) {
                     // Popcorn Canvas Icon
                     PopcornCanvasIcon(
-                        color = brandPrimary,
-                        bgColor = backgroundColor,
+                        color = BrandPrimary,
+                        bgColor = BackgroundColor,
                         modifier = Modifier.size(120.dp)
                     )
 
@@ -94,7 +93,7 @@ fun HomeScreen(onNavigateToSources: () -> Unit) {
                         pushStringAnnotation(tag = "sources", annotation = "sources")
                         withStyle(
                             style = SpanStyle(
-                                color = brandPrimary,
+                                color = BrandPrimary,
                                 fontWeight = FontWeight.Bold,
                                 textDecoration = TextDecoration.None
                             )
@@ -108,7 +107,7 @@ fun HomeScreen(onNavigateToSources: () -> Unit) {
                     ClickableText(
                         text = annotatedText,
                         style = TextStyle(
-                            color = mutedGray,
+                            color = MutedGray,
                             fontSize = 14.sp,
                             textAlign = TextAlign.Center,
                             lineHeight = 20.sp

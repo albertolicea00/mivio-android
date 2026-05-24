@@ -22,10 +22,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-private val BackgroundColor = Color(0xFF0C0D14)
-private val BrandPrimary = Color(0xFFF14911)
-private val SectionBackground = Color(0xFF191A23)
+import com.albertolicea00.mivio.ui.theme.BackgroundColor
+import com.albertolicea00.mivio.ui.theme.BrandPrimary
+import com.albertolicea00.mivio.ui.theme.SectionBackground
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

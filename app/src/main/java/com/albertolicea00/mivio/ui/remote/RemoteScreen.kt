@@ -12,25 +12,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.albertolicea00.mivio.ui.theme.BackgroundColor
+import com.albertolicea00.mivio.ui.theme.BrandPrimary
+import com.albertolicea00.mivio.ui.theme.MutedGray
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RemoteScreen() {
-    val backgroundColor = Color(0xFF0C0D14)
-    val mutedGray = Color(0xFF7E8494)
-    val brandPrimary = Color(0xFFF14911)
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Remote", fontWeight = FontWeight.Bold, color = Color.White) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = backgroundColor,
+                    containerColor = BackgroundColor,
                     titleContentColor = Color.White
                 )
             )
         },
-        containerColor = backgroundColor
+        containerColor = BackgroundColor
     ) { padding ->
         Column(
             modifier = Modifier
@@ -42,13 +42,13 @@ fun RemoteScreen() {
             Icon(
                 imageVector = Icons.Default.SettingsRemote,
                 contentDescription = null,
-                tint = brandPrimary,
+                tint = BrandPrimary,
                 modifier = Modifier.size(64.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Connect to a TV or VR headset",
-                color = mutedGray,
+                color = MutedGray,
                 fontSize = 16.sp
             )
         }

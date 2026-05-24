@@ -24,6 +24,7 @@ import com.albertolicea00.mivio.ui.source.SourceScreen
 import com.albertolicea00.mivio.ui.remote.RemoteScreen
 import com.albertolicea00.mivio.ui.search.SearchScreen
 import com.albertolicea00.mivio.ui.settings.SettingsScreen
+import com.albertolicea00.mivio.ui.theme.*
 
 @Composable
 fun MivioNavGraph(navController: NavHostController = rememberNavController()) {
@@ -43,11 +44,11 @@ fun MivioNavGraph(navController: NavHostController = rememberNavController()) {
     val showBottomBar = bottomNavItems.any { it.first == currentRoute }
 
     Scaffold(
-        containerColor = Color(0xFF0C0D14), // Dark background for the whole app
+        containerColor = BackgroundColor, // Dark background for the whole app
         bottomBar = {
             if (showBottomBar) {
                 NavigationBar(
-                    containerColor = Color(0xFF191A23), // Match search bar background
+                    containerColor = SectionBackground, // Match search bar background
                     contentColor = Color.White
                 ) {
                     bottomNavItems.forEach { (route, title, icon) ->
@@ -65,10 +66,10 @@ fun MivioNavGraph(navController: NavHostController = rememberNavController()) {
                                 }
                             },
                             colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Color(0xFFF14911), // Brand Primary
-                                selectedTextColor = Color(0xFFF14911),
-                                unselectedIconColor = Color(0xFF7E8494), // Muted Gray
-                                unselectedTextColor = Color(0xFF7E8494),
+                                selectedIconColor = BrandPrimary, // Brand Primary
+                                selectedTextColor = BrandPrimary,
+                                unselectedIconColor = MutedGray, // Muted Gray
+                                unselectedTextColor = MutedGray,
                                 indicatorColor = Color.Transparent
                             )
                         )

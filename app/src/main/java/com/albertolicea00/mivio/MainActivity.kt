@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.albertolicea00.mivio.ui.navigation.MivioNavGraph
+import com.albertolicea00.mivio.ui.theme.BackgroundColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
             MaterialTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = androidx.compose.ui.graphics.Color(0xFF0C0D14)
+                    color = BackgroundColor
                 ) {
                     MivioNavGraph()
                 }
