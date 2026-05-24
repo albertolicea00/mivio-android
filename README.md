@@ -4,7 +4,7 @@
 [![Jetpack Compose](https://img.shields.io/badge/UI-Jetpack_Compose-blue.svg?style=flat-square)](https://developer.android.com/jetpack/compose)
 [![Room](https://img.shields.io/badge/Database-Room_SQLite-red.svg?style=flat-square)](https://developer.android.com/training/data-storage/room)
 [![Platform Compatibility](https://img.shields.io/badge/Platforms-Android%20Mobile%20%7C%20Tablets-brightgreen.svg?style=flat-square)](#platform-specific-goals)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![License: Non-Commercial](https://img.shields.io/badge/License-Non_Commercial-red.svg?style=flat-square)](LICENSE)
 
 **Mivio** is a premium, high-performance media management and playback application meticulously designed for the Android Ecosystem. Built natively using modern Kotlin, Jetpack Compose, and Room, Mivio delivers an elegant, fast, and native media cataloging and streaming experience across **Android smartphones and tablets**.
 
@@ -98,4 +98,4 @@ For vulnerability reporting or security-related matters, see [SECURITY.md](SECUR
 ---
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Mivio Source-Available End User License Agreement (EULA)**. Commercial use, monetization, and unauthorized redistribution are strictly prohibited. See the [LICENSE](LICENSE) file for details.
