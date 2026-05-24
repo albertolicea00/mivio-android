@@ -7,7 +7,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -22,13 +21,45 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.albertolicea00.mivio.ui.theme.BackgroundColor
 import com.albertolicea00.mivio.ui.theme.BrandPrimary
 import com.albertolicea00.mivio.ui.theme.SectionBackground
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen() {
+    val navController = rememberNavController()
+    
+    NavHost(navController = navController, startDestination = "main") {
+        composable("main") { SettingsMainScreen(navController) }
+        composable("appearance") { AppearanceSettingsScreen(navController) }
+        composable("privacy") { PrivacySettingsScreen(navController) }
+        composable("multiaccount") { MultiAccountSettingsScreen(navController) }
+        composable("library") { LibrarySettingsScreen(navController) }
+        composable("sync") { SyncSettingsScreen(navController) }
+        composable("metadata") { MetadataSettingsScreen(navController) }
+        composable("collections") { CollectionsSettingsScreen(navController) }
+        composable("playback") { PlaybackSettingsScreen(navController) }
+        composable("audio") { AudioSettingsScreen(navController) }
+        composable("video") { VideoSettingsScreen(navController) }
+        composable("subtitles") { SubtitleSettingsScreen(navController) }
+        composable("casting") { CastingSettingsScreen(navController) }
+        composable("network") { NetworkSettingsScreen(navController) }
+        composable("lab") { LabSettingsScreen(navController) }
+        composable("parental") { ParentalControlSettingsScreen(navController) }
+        composable("reportbug") { ReportBugScreen(navController) }
+        composable("followus") { FollowUsScreen(navController) }
+        composable("addfiles") { SettingsDetailPlaceholderScreen(navController, "Add Files") }
+        composable("donation") { SettingsDetailPlaceholderScreen(navController, "Donation") }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SettingsMainScreen(navController: NavController) {
     val context = LocalContext.current
     var showingRescanAlert by remember { mutableStateOf(false) }
     var showingResetAlert by remember { mutableStateOf(false) }
@@ -60,7 +91,7 @@ fun SettingsScreen() {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { /* Navigate to MultiAccounts */ }
+                            .clickable { navController.navigate("multiaccount") }
                             .padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -83,8 +114,8 @@ fun SettingsScreen() {
             item {
                 SettingsSectionHeader("App Preferences")
                 SettingsSection {
-                    SettingsRow(icon = Icons.Default.Palette, color = Color(0xFF3F51B5), title = "Appearance") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Security, color = Color(0xFF2196F3), title = "Privacy") { /* Navigate */ }
+                    SettingsRow(icon = Icons.Default.Palette, color = Color(0xFF3F51B5), title = "Appearance") { navController.navigate("appearance") }
+                    SettingsRow(icon = Icons.Default.Security, color = Color(0xFF2196F3), title = "Privacy") { navController.navigate("privacy") }
                     SettingsRow(icon = Icons.Default.Refresh, color = BrandPrimary, title = "Rescan Library") {
                         showingRescanAlert = true
                     }
@@ -95,11 +126,11 @@ fun SettingsScreen() {
             item {
                 SettingsSectionHeader("Library & Sources")
                 SettingsSection {
-                    SettingsRow(icon = Icons.Default.AddCircle, color = BrandPrimary, title = "Add Files") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.LibraryBooks, color = Color(0xFF009688), title = "Library") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Sync, color = Color(0xFF4CAF50), title = "Sync") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Image, color = Color(0xFFE91E63), title = "Metadata & Artwork") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.CollectionsBookmark, color = Color(0xFFFF9800), title = "Collection & Groups") { /* Navigate */ }
+                    SettingsRow(icon = Icons.Default.AddCircle, color = BrandPrimary, title = "Add Files") { navController.navigate("addfiles") }
+                    SettingsRow(icon = Icons.Default.LibraryBooks, color = Color(0xFF009688), title = "Library") { navController.navigate("library") }
+                    SettingsRow(icon = Icons.Default.Sync, color = Color(0xFF4CAF50), title = "Sync") { navController.navigate("sync") }
+                    SettingsRow(icon = Icons.Default.Image, color = Color(0xFFE91E63), title = "Metadata & Artwork") { navController.navigate("metadata") }
+                    SettingsRow(icon = Icons.Default.CollectionsBookmark, color = Color(0xFFFF9800), title = "Collection & Groups") { navController.navigate("collections") }
                 }
             }
 
@@ -107,10 +138,10 @@ fun SettingsScreen() {
             item {
                 SettingsSectionHeader("Playback Experience")
                 SettingsSection {
-                    SettingsRow(icon = Icons.Default.PlayCircleFilled, color = Color(0xFFF44336), title = "Playback") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.VolumeUp, color = Color(0xFF00BCD4), title = "Audio") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Tv, color = Color(0xFF2196F3), title = "Video") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Subtitles, color = Color(0xFFFFEB3B), title = "Subtitles") { /* Navigate */ }
+                    SettingsRow(icon = Icons.Default.PlayCircleFilled, color = Color(0xFFF44336), title = "Playback") { navController.navigate("playback") }
+                    SettingsRow(icon = Icons.Default.VolumeUp, color = Color(0xFF00BCD4), title = "Audio") { navController.navigate("audio") }
+                    SettingsRow(icon = Icons.Default.Tv, color = Color(0xFF2196F3), title = "Video") { navController.navigate("video") }
+                    SettingsRow(icon = Icons.Default.Subtitles, color = Color(0xFFFFEB3B), title = "Subtitles") { navController.navigate("subtitles") }
                     SettingsRow(icon = Icons.Default.Language, color = Color(0xFF009688), title = "Language") {
                         context.startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
                     }
@@ -121,10 +152,10 @@ fun SettingsScreen() {
             item {
                 SettingsSectionHeader("Network & Experimental")
                 SettingsSection {
-                    SettingsRow(icon = Icons.Default.Cast, color = Color(0xFF3F51B5), title = "Casting") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.NetworkWifi, color = Color(0xFF9E9E9E), title = "Network") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Science, color = Color(0xFF00BFA5), title = "Lab") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.FamilyRestroom, color = Color(0xFFFF9800), title = "Parental Control") { /* Navigate */ }
+                    SettingsRow(icon = Icons.Default.Cast, color = Color(0xFF3F51B5), title = "Casting") { navController.navigate("casting") }
+                    SettingsRow(icon = Icons.Default.NetworkWifi, color = Color(0xFF9E9E9E), title = "Network") { navController.navigate("network") }
+                    SettingsRow(icon = Icons.Default.Science, color = Color(0xFF00BFA5), title = "Lab") { navController.navigate("lab") }
+                    SettingsRow(icon = Icons.Default.FamilyRestroom, color = Color(0xFFFF9800), title = "Parental Control") { navController.navigate("parental") }
                     SettingsRow(icon = Icons.Default.SettingsBackupRestore, color = Color(0xFFF44336), title = "Reset All Settings", titleColor = Color(0xFFF44336)) {
                         showingResetAlert = true
                     }
@@ -136,11 +167,11 @@ fun SettingsScreen() {
                 SettingsSectionHeader("Support & Community")
                 SettingsSection {
                     LinkRow(icon = Icons.Default.HelpCenter, color = Color(0xFF3F51B5), title = "Help Center", url = "https://mivio.app/help")
-                    SettingsRow(icon = Icons.Default.BugReport, color = Color(0xFFF44336), title = "Report a Bug") { /* Navigate */ }
+                    SettingsRow(icon = Icons.Default.BugReport, color = Color(0xFFF44336), title = "Report a Bug") { navController.navigate("reportbug") }
                     LinkRow(icon = Icons.Default.Star, color = Color(0xFFFFEB3B), title = "Rate Mivio", url = "https://play.google.com/store/apps/details?id=com.albertolicea00.mivio")
-                    LinkRow(icon = Icons.Default.Share, color = Color(0xFF2196F3), title = "Tell a Friend", url = "https://mivio.app")
-                    SettingsRow(icon = Icons.Default.ChatBubble, color = Color(0xFF00BCD4), title = "Follow Us") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Favorite, color = Color(0xFFE91E63), title = "Make a Donation") { /* Navigate */ }
+                    ShareRow(icon = Icons.Default.Share, color = Color(0xFF2196F3), title = "Tell a Friend", text = "Check out Mivio, the ultimate media player! https://mivio.app")
+                    SettingsRow(icon = Icons.Default.ChatBubble, color = Color(0xFF00BCD4), title = "Follow Us") { navController.navigate("followus") }
+                    SettingsRow(icon = Icons.Default.Favorite, color = Color(0xFFE91E63), title = "Make a Donation") { navController.navigate("donation") }
                 }
             }
 
@@ -284,6 +315,30 @@ fun LinkRow(
         onClick = {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             context.startActivity(intent)
+        }
+    )
+}
+
+@Composable
+fun ShareRow(
+    icon: ImageVector,
+    color: Color,
+    title: String,
+    text: String
+) {
+    val context = LocalContext.current
+    SettingsRow(
+        icon = icon,
+        color = color,
+        title = title,
+        onClick = {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, text)
+                type = "text/plain"
+            }
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            context.startActivity(shareIntent)
         }
     )
 }
