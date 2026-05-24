@@ -64,8 +64,8 @@ fun MivioNavGraph(navController: NavHostController = rememberNavController()) {
                                 }
                             },
                             colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Color(0xFFE5A93B), // Brand Gold
-                                selectedTextColor = Color(0xFFE5A93B),
+                                selectedIconColor = Color(0xFFF14911), // Brand Primary
+                                selectedTextColor = Color(0xFFF14911),
                                 unselectedIconColor = Color(0xFF7E8494), // Muted Gray
                                 unselectedTextColor = Color(0xFF7E8494),
                                 indicatorColor = Color.Transparent
