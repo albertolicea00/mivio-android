@@ -43,6 +43,7 @@ fun MivioNavGraph(navController: NavHostController = rememberNavController()) {
     val showBottomBar = bottomNavItems.any { it.first == currentRoute }
 
     Scaffold(
+        containerColor = Color(0xFF0C0D14), // Dark background for the whole app
         bottomBar = {
             if (showBottomBar) {
                 NavigationBar(

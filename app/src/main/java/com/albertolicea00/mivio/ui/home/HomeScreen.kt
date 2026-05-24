@@ -26,36 +26,37 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onNavigateToSources: () -> Unit) {
     val backgroundColor = Color(0xFF0C0D14)
-    val brandGold = Color(0xFFE5A93B)
+    val brandPrimary = Color(0xFFF14911)
     val mutedGray = Color(0xFF7E8494)
 
-    BoxWithConstraints(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(backgroundColor)
-            .windowInsetsPadding(WindowInsets.safeContent)
-    ) {
-        val isWideScreen = maxWidth >= 600.dp
-
-        Column(
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Your Library", fontWeight = FontWeight.Bold, color = Color.White) },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = backgroundColor,
+                    titleContentColor = Color.White
+                )
+            )
+        },
+        containerColor = backgroundColor
+    ) { paddingValues ->
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 24.dp)
+                .padding(paddingValues)
         ) {
+            val isWideScreen = maxWidth >= 600.dp
 
-            // ----------------------------------------------------
-            // 2. Title Section
-            // ----------------------------------------------------
-            Text(
-                text = "Your Library",
-                color = Color.White,
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 24.dp)
+            ) {
 
             // ----------------------------------------------------
             // 3. Centered Empty State
@@ -73,7 +74,7 @@ fun HomeScreen(onNavigateToSources: () -> Unit) {
                 ) {
                     // Popcorn Canvas Icon
                     PopcornCanvasIcon(
-                        color = brandGold,
+                        color = brandPrimary,
                         bgColor = backgroundColor,
                         modifier = Modifier.size(120.dp)
                     )
@@ -93,7 +94,7 @@ fun HomeScreen(onNavigateToSources: () -> Unit) {
                         pushStringAnnotation(tag = "sources", annotation = "sources")
                         withStyle(
                             style = SpanStyle(
-                                color = brandGold,
+                                color = brandPrimary,
                                 fontWeight = FontWeight.Bold,
                                 textDecoration = TextDecoration.None
                             )
@@ -124,6 +125,7 @@ fun HomeScreen(onNavigateToSources: () -> Unit) {
             }
         }
     }
+}
 }
 
 @Composable

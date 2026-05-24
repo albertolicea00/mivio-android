@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 private val BackgroundColor = Color(0xFF0C0D14)
-private val BrandGold = Color(0xFFE5A93B)
+private val BrandPrimary = Color(0xFFF14911)
 private val SectionBackground = Color(0xFF191A23)
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,11 +70,11 @@ fun SettingsScreen() {
                             imageVector = Icons.Default.AccountCircle,
                             contentDescription = "Profile",
                             modifier = Modifier.size(60.dp),
-                            tint = BrandGold.copy(alpha = 0.8f)
+                            tint = BrandPrimary.copy(alpha = 0.8f)
                         )
                         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                             Text("Default Profile", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                            Text("Manage Accounts", fontSize = 14.sp, color = BrandGold)
+                            Text("Manage Accounts", fontSize = 14.sp, color = BrandPrimary)
                         }
                     }
                 }
@@ -86,7 +86,7 @@ fun SettingsScreen() {
                 SettingsSection {
                     SettingsRow(icon = Icons.Default.Palette, color = Color(0xFF3F51B5), title = "Appearance") { /* Navigate */ }
                     SettingsRow(icon = Icons.Default.Security, color = Color(0xFF2196F3), title = "Privacy") { /* Navigate */ }
-                    SettingsRow(icon = Icons.Default.Refresh, color = BrandGold, title = "Rescan Library") {
+                    SettingsRow(icon = Icons.Default.Refresh, color = BrandPrimary, title = "Rescan Library") {
                         showingRescanAlert = true
                     }
                 }
@@ -96,7 +96,7 @@ fun SettingsScreen() {
             item {
                 SettingsSectionHeader("Library & Sources")
                 SettingsSection {
-                    SettingsRow(icon = Icons.Default.AddCircle, color = BrandGold, title = "Add Files") { /* Navigate */ }
+                    SettingsRow(icon = Icons.Default.AddCircle, color = BrandPrimary, title = "Add Files") { /* Navigate */ }
                     SettingsRow(icon = Icons.Default.LibraryBooks, color = Color(0xFF009688), title = "Library") { /* Navigate */ }
                     SettingsRow(icon = Icons.Default.Sync, color = Color(0xFF4CAF50), title = "Sync") { /* Navigate */ }
                     SettingsRow(icon = Icons.Default.Image, color = Color(0xFFE91E63), title = "Metadata & Artwork") { /* Navigate */ }
@@ -172,7 +172,7 @@ fun SettingsScreen() {
                 title = { Text("Rescan Library") },
                 text = { Text("This will look for new files and update metadata.") },
                 confirmButton = {
-                    TextButton(onClick = { showingRescanAlert = false }) { Text("Scan", color = BrandGold) }
+                    TextButton(onClick = { showingRescanAlert = false }) { Text("Scan", color = BrandPrimary) }
                 },
                 dismissButton = {
                     TextButton(onClick = { showingRescanAlert = false }) { Text("Cancel", color = Color.Gray) }
