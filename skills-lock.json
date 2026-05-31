@@ -42,6 +42,12 @@
       "sourceType": "autoskills-registry",
       "computedHash": "8cb3647f71f6904752a1681eb575ea1fda35cf7d769834b4034b9f52ac0d146e"
     },
+    "android-room-database": {
+      "source": "krutikjain/android-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/android-room-database/SKILL.md",
+      "computedHash": "871d2239c591270bf158988b8fb2412d3f76a9274e4eb1a079bc506dd6f327cb"
+    },
     "android-testing-unit": {
       "source": "krutikJain/android-agent-skills",
       "sourceType": "autoskills-registry",
