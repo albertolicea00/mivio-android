@@ -30,7 +30,6 @@ local.properties
 
 # External Tools
 .prompts/
-.claude/
 
 # Log files
 *.log
