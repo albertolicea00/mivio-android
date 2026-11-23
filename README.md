@@ -90,7 +90,7 @@ Every artifact is named `mivio-v<versionName>-<versionCode>-<debug|release>.apk`
 | Build | Command | Output |
 | ----- | ------- | ------ |
 | Debug APK | `./gradlew :app:assembleDebug` | `app/build/outputs/apk/debug/mivio-v<versionName>-<versionCode>-debug.apk` |
-| Release APK | `./gradlew :app:assembleRelease` | `app/build/outputs/apk/release/mivio-v<versionName>-<versionCode>-release-unsigned.apk` (see below) |
+| Release APK | `./gradlew :app:assembleRelease` | `app/build/outputs/apk/release/mivio-v<versionName>-<versionCode>-release.apk`, signed (see below) |
 | Release bundle (Play Store) | `./gradlew :app:bundleRelease` | `app/build/outputs/bundle/release/mivio-v<versionName>-<versionCode>-release.aab` |
 | Debug bundle | `./gradlew :app:bundleDebug` | `app/build/outputs/bundle/debug/mivio-v<versionName>-<versionCode>-debug.aab` |
 
@@ -98,9 +98,7 @@ Debug builds are signed automatically with the Android SDK debug key and can be 
 
 ### Release Signing
 
-> **Not wired yet.** The Gradle build does not read any signing configuration, so release builds come out **unsigned**: the release APK gets an `-unsigned` suffix from the Android Gradle Plugin and cannot be installed until it is signed (for example with `apksigner`), and the release bundle must be signed before uploading.
-
-The intended setup, once signing is added to `app/build.gradle.kts`, is a git-ignored `keys/release.properties` file:
+Release builds (`assembleRelease`, `bundleRelease`) are signed with the keystore described in a git-ignored `keys/release.properties` file (copy `keys/release.properties.example`):
 
 ```properties
 storeFile=<keystore file, relative to keys/>
@@ -109,7 +107,9 @@ keyAlias=<key alias>
 keyPassword=<key password>
 ```
 
-It is read with Java `Properties`, so a literal backslash in a password must be written as `\\`. Never commit this file or the keystore; `.gitignore` already excludes `keys/release.properties`, `*.jks` and `*.keystore`.
+Without that file, any Gradle run that names a `Release` task stops with a message; debug builds do not need it. Keystores made by `keytool` since Java 9 are PKCS12, where the key password is always the store password. Back the keystore and its password up outside the repository and never regenerate it: an app signed with another key cannot update the installed one.
+
+It is read as UTF-8 with Java `Properties`, so a literal backslash in a password must be written as `\\`; other characters (`= : # ! $`, quotes) go as they are, without quotes. Never commit this file or the keystore; `.gitignore` already excludes `keys/release.properties`, `*.jks` and `*.keystore`.
 
 ---
 

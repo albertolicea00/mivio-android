@@ -1,8 +1,19 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
+}
+
+// Release signing lives in keys/release.properties (git-ignored; copy keys/release.properties.example).
+// Read as UTF-8 with Java Properties rules (a literal backslash is written \\); storeFile is relative to keys/.
+val releaseSigning = rootProject.file("keys/release.properties").takeIf { it.exists() }?.let { file ->
+    Properties().apply { file.reader(Charsets.UTF_8).use { load(it) } }
+}
+if (releaseSigning == null && gradle.startParameter.taskNames.any { it.contains("Release") }) {
+    throw GradleException("Release signing needs keys/release.properties. Copy keys/release.properties.example and fill it in.")
 }
 
 android {
@@ -22,9 +33,21 @@ android {
         }
     }
 
+    signingConfigs {
+        if (releaseSigning != null) {
+            create("release") {
+                storeFile = rootProject.file("keys").resolve(releaseSigning.getProperty("storeFile"))
+                storePassword = releaseSigning.getProperty("storePassword")
+                keyAlias = releaseSigning.getProperty("keyAlias")
+                keyPassword = releaseSigning.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.findByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
