@@ -48,6 +48,11 @@ android {
     }
 }
 
+// Outputs read mivio-v<versionName>-<versionCode>-<debug|release>.apk (and .aab); AGP appends the build type.
+base {
+    archivesName.set(android.defaultConfig.let { "mivio-v${it.versionName}-${it.versionCode}" })
+}
+
 dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
