@@ -46,7 +46,10 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            // R8 shrinks and obfuscates code and drops unused resources; check a release build on a
+            // device after adding a library that uses reflection (rules in proguard-rules.pro).
+            isMinifyEnabled = true
+            isShrinkResources = true
             signingConfig = signingConfigs.findByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -111,7 +114,10 @@ dependencies {
     
     // Networking (jcifs-ng, Sardine)
     implementation("eu.agno3.jcifs:jcifs-ng:2.1.9")
-    implementation("com.github.thegrizzlylabs:sardine-android:0.8")
+    implementation("com.github.thegrizzlylabs:sardine-android:0.8") {
+        // Android already ships org.xmlpull.v1; the bundled copy makes R8 fail.
+        exclude(group = "xpp3", module = "xpp3")
+    }
     
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
