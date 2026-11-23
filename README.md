@@ -96,6 +96,8 @@ Every artifact is named `mivio-v<versionName>-<versionCode>-<debug|release>.apk`
 
 Debug builds are signed automatically with the Android SDK debug key and can be installed directly (`./gradlew :app:installDebug`).
 
+Release builds are shrunk with R8 (`isMinifyEnabled`, `isShrinkResources`). Gson fills the API response classes in `data/remote/api` by field name, so `app/proguard-rules.pro` keeps them, along with the rules Retrofit 2.9 needs; `xpp3` is excluded from `sardine-android` because Android already ships `org.xmlpull.v1`. After adding a model or a library that uses reflection, test a release build on a device: TMDB search, subtitles, playback and WebDAV/SMB sources.
+
 ### Release Signing
 
 Release builds (`assembleRelease`, `bundleRelease`) are signed with the keystore described in a git-ignored `keys/release.properties` file (copy `keys/release.properties.example`):
