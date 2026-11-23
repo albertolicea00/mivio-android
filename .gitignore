@@ -39,20 +39,15 @@ hs_err_pid*
 replay_pid*
 
 # Signing & secrets
-*.keystore
 *.jks
 *.p12
+*.p8
 *.mobileprovision
 .env
 .env.*
 secrets.properties
+keystore.properties
+signing.properties
 *.secret
 keys/google-services.json
 keys/release.properties
-*.jks
-*.keystore
-keystore.properties
-signing.properties
-*.p12
-*.mobileprovision
-*.p8
